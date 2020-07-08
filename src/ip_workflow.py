@@ -36,17 +36,18 @@ def main(wf):
     r.raise_for_status()
     result = r.json()
     external_ip = result['ip']
+    country = result['country']
 
     wf.add_item(title="Local IP: {}".format(local_ip),
                 arg=local_ip,
                 valid=True,
-                subtitle=local_ip,
+                subtitle="Local",
                 copytext=local_ip,
                 icon='local-ip.png')
     wf.add_item(title="External IP: {}".format(external_ip),
                 arg=external_ip,
                 valid=True,
-                subtitle=external_ip,
+                subtitle="Country: {}".format(country),
                 copytext=external_ip,
                 icon='external-ip.png')
 
