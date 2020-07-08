@@ -42,13 +42,13 @@ def main(wf):
                 valid=True,
                 subtitle=local_ip,
                 copytext=local_ip,
-                icon=ICON_WEB)
+                icon='local-ip.png')
     wf.add_item(title="External IP: {}".format(external_ip),
                 arg=external_ip,
                 valid=True,
                 subtitle=external_ip,
                 copytext=external_ip,
-                icon=ICON_WEB)
+                icon='external-ip.png')
 
     # Send the results to Alfred as XML
     wf.send_feedback()
