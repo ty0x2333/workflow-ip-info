@@ -4,25 +4,6 @@ import socket
 
 
 def main(wf):
-    #  url = 'https://api.pinboard.in/v1/posts/recent'
-    #  params = dict(auth_token=API_KEY, count=20, format='json')
-    #  r = web.get(url, params)
-
-    #  # throw an error if request failed
-    #  # Workflow will catch this and show it to the user
-    #  r.raise_for_status()
-
-    #  # Parse the JSON returned by pinboard and extract the posts
-    #  result = r.json()
-    #  posts = result['posts']
-
-    #  # Loop through the returned posts and add an item for each to
-    #  # the list of results for Alfred
-    #  for post in posts:
-    #  wf.add_item(title=post['description'],
-    #              subtitle=post['href'],
-    #              icon=ICON_WEB)
-
     global s
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -31,12 +12,13 @@ def main(wf):
     finally:
         s.close()
 
-    r = web.get("https://api.myip.com")
+    r = web.get("http://ip-api.com/json")
 
     r.raise_for_status()
     result = r.json()
-    external_ip = result['ip']
+    external_ip = result['query']
     country = result['country']
+    city = result['city']
 
     wf.add_item(title="Local IP: {}".format(local_ip),
                 arg=local_ip,
@@ -47,7 +29,7 @@ def main(wf):
     wf.add_item(title="External IP: {}".format(external_ip),
                 arg=external_ip,
                 valid=True,
-                subtitle="Country: {}".format(country),
+                subtitle="Country: {}, City: {}".format(country, city),
                 copytext=external_ip,
                 icon='external-ip.png')
 
