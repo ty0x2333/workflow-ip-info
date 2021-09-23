@@ -7,6 +7,12 @@ IP Info Workflow for Alfred 4
 
 **[Download](https://github.com/ty0x2333/workflow-ip-info/releases/latest)**
 
+NOTE
+===
+If you need a more full-featured Workflow.
+
+Here is a better alternative: [jeppestaerk/alfred-show-network-info](https://github.com/jeppestaerk/alfred-show-network-info)
+
 Requirement
 ===
 1. Alfred 4
